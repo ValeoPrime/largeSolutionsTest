@@ -11,10 +11,12 @@ function App() {
   const [checkboxValue, setcheckboxValue] = useState(false);
 
   useEffect(() => {
-    axios("data/allWords.json")
+    axios.get("https://www.mrsoft.by/data.json")
       .then((response) => {
-        setAllWords(Object.values(response.data[0]));
-        setFilterWords(Object.values(response.data[0]));
+
+        console.log(response);
+        setAllWords(Object.values(response.data.data)); 
+        setFilterWords(Object.values(response.data.data));
       })
       .catch((e) => {
         console.log(e);
@@ -45,13 +47,11 @@ function App() {
     e.preventDefault();
 
     if(checkboxValue){
-      console.log('С учетом регистра');
       setFilterWords(
         allWords.filter((item) => item.indexOf(inputValue) > -1)
       );
       setinputValue('')
     } else {
-      console.log('Без учета регистра');
       setFilterWords(
         allWords.filter((item) => item.toLowerCase().indexOf(inputValue.toLowerCase()) > -1)
       );
