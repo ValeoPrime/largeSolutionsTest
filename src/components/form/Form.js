@@ -1,17 +1,17 @@
 import React from "react";
-import './form.sass'
+import "./form.sass";
 
-const Form = () => {
+const Form = ({searchMatch,comparisonLength, inputValue, inputHandler, checkboxValue, checkboxHandler}) => {
   return (
     <form className="mainForm">
-      <input type="text" />
+      <input onChange={inputHandler} type="text" value={inputValue}/>
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" checked={checkboxValue} onChange={checkboxHandler}/>
         Сравнивать с учетом регистра
       </label>
 
-      <button>По длинне строк</button>
-      <button>По подстроке</button>
+      <button onClick={comparisonLength}>По длинне строк</button>
+      <button onClick={searchMatch}>По подстроке</button>
     </form>
   );
 };
