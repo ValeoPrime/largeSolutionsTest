@@ -11,7 +11,7 @@ function App() {
   const [checkboxValue, setcheckboxValue] = useState(false);
 
   useEffect(() => {
-    axios.get("https://www.mrsoft.by/data.json")
+    axios.get("data/allWords.json") //https://www.mrsoft.by/data.json
       .then((response) => {
 
         console.log(response);
